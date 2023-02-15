@@ -1,6 +1,8 @@
 import SwiftUI
 
 struct PersonCardView: View {
+    @State private var isFollowed = false
+    
     let person: Person
     
     var body: some View {
@@ -33,20 +35,38 @@ struct PersonCardView: View {
             }
             
             VStack(spacing: 0) {
-                Button {
-                    //TODO: action
-                } label: {
-                    Text("Follow")
-                        .padding(.vertical, 4)
-                        .padding(.horizontal)
-                        .overlay {
-                            Capsule()
-                                .stroke(lineWidth: 2)
+                if !isFollowed {
+                    Button {
+                        withAnimation {
+                            isFollowed.toggle()
                         }
+                        
+                    } label: {
+                        Text("Follow")
+                            .padding(.vertical, 4)
+                            .padding(.horizontal)
+                            .overlay {
+                                Capsule()
+                                    .stroke(lineWidth: 2)
+                            }
+                    }
+                    .frame(maxWidth: .infinity, alignment: .trailing)
+                    .padding()
+                    .transition(.scale(scale: 10000 , anchor: .zero))
+                } else {
+                    Button {
+                        isFollowed.toggle()
+                    } label: {
+                        Image(systemName: "checkmark.seal.fill")
+                            .padding(.vertical, 3.2)
+                            .padding(.horizontal)
+                            .foregroundColor(.green)
+                        
+                    }
+                    .frame(maxWidth: .infinity, alignment: .trailing)
+                    .padding()
                 }
-                .frame(maxWidth: .infinity, alignment: .trailing)
-                .padding()
-                
+  
                 HStack {
                     Text(person.name)
                         .fontWeight(.bold)
@@ -68,7 +88,7 @@ struct PersonCardView: View {
 
 struct PersonCardView_Previews: PreviewProvider {
     static var previews: some View {
-        PersonCardView(person: person1)
+        PersonCardView(person: person2)
             .previewLayout(.sizeThatFits)
     }
 }
