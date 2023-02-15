@@ -1,17 +1,16 @@
 import SwiftUI
 
 struct ContentView: View {
+    private let persons = [person1, person2 ,person3 ,person4]
     var body: some View {
         List {
-            PersonCardView(person: person1)
-                .listRowSeparator(.hidden)
-                
-            PersonCardView(person: person2)
-                .listRowSeparator(.hidden)
+            ForEach(0..<persons.count) {
+                PersonCardView(person: persons[$0])
+                    .listRowSeparator(.hidden)
+            }
         }
         .listStyle(.plain)
         .buttonStyle(.plain)
-        
     }
 }
 
