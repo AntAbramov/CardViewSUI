@@ -1,6 +1,6 @@
 # CardViewSUI
 
 ## SCREEN
-![CardView](https://user-images.githubusercontent.com/119042870/219298778-086150d7-702a-423f-90a6-9425a2c1eb7d.png)
+![CardView](https://user-images.githubusercontent.com/119042870/219301959-1dc7b24b-2cee-4730-83ec-e8f9c83ececa.png)
 
 * * *
